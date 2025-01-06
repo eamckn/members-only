@@ -1,7 +1,8 @@
 // App imports
+require("dotenv").config();
 const express = require("express");
 const path = require("node:path");
-require("dotenv").config();
+const { router, indexRouter } = require("./routes/indexRouter");
 
 // App constants
 const PORT = process.env.PORT || 8080;
@@ -16,6 +17,8 @@ app.set("view engine", "ejs");
 // App level middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(assetsPath));
+
+app.use("/", indexRouter);
 
 // App server
 app.listen(PORT, () => {
