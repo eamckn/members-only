@@ -1,3 +1,3 @@
-# express-skeleton
+# members-only
 
-Repository template for basic express applications. Extra functionality (authentication, etc) can be built on top of this.
+Back-end project to showcase understanding and implementation of user authentication and session storage using passport.js
