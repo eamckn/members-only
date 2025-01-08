@@ -42,6 +42,10 @@ const generatePassword = (plainTextPassword) => {
   return hash;
 };
 
+module.exports.getHome = (req, res, next) => {
+  res.render("index");
+};
+
 module.exports.getSignUpForm = async (req, res, next) => {
   //const password = generatePassword("hello");
   //console.log(bcrypt.compareSync("hello", password));
@@ -54,10 +58,10 @@ module.exports.createUser = [
   async (req, res, next) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-      const { firstname, lastname, email, password, ismember } = req.body;
+      const { firstname, lastname, email, password, is_member } = req.body;
       const hashedPassword = generatePassword(password);
-      await db.addUser(firstname, lastname, email, hashedPassword, ismember);
-      res.redirect("/sign-up");
+      await db.addUser(firstname, lastname, email, hashedPassword, is_member);
+      res.redirect("/");
     } else {
       res.redirect("/sign-up");
     }

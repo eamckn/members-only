@@ -5,10 +5,10 @@ module.exports.addUser = async (
   lastname,
   email,
   password,
-  ismember
+  is_member
 ) => {
   await pool.query(
-    "INSERT INTO members (firstname, lastname, email, password, ismember) VALUES ($1, $2, $3, $4, $5)",
-    [firstname, lastname, email, password, ismember]
+    "INSERT INTO members (firstname, lastname, email, password, is_member) VALUES ($1, $2, $3, $4, $5)",
+    [firstname, lastname, email, password, is_member]
   );
 };
