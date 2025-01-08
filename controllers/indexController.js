@@ -45,6 +45,7 @@ const generatePassword = (plainTextPassword) => {
 module.exports.getSignUpForm = async (req, res, next) => {
   //const password = generatePassword("hello");
   //console.log(bcrypt.compareSync("hello", password));
+  //console.log(req.session);
   res.render("sign-up");
 };
 
