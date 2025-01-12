@@ -6,6 +6,8 @@ const path = require("node:path");
 const pgSession = require("connect-pg-simple")(session);
 const { router, indexRouter } = require("./routes/indexRouter");
 const pool = require("./db/pool");
+const passport = require("passport");
+require("./config/passport");
 
 // App constants
 const PORT = process.env.PORT || 8080;
@@ -34,6 +36,16 @@ app.use(
     },
   })
 );
+app.use(passport.session());
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+app.use((req, res, next) => {
+  console.log(req.session);
+  console.log(req.user);
+  next();
+});
 
 app.use("/", indexRouter);
 

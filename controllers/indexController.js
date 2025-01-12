@@ -53,17 +53,34 @@ module.exports.getSignUpForm = async (req, res, next) => {
   res.render("sign-up");
 };
 
+module.exports.getLogInForm = async (req, res, next) => {
+  res.render("log-in");
+};
+
 module.exports.createUser = [
   validateUser,
   async (req, res, next) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
       const { firstname, lastname, email, password, is_member } = req.body;
-      const hashedPassword = generatePassword(password);
-      await db.addUser(firstname, lastname, email, hashedPassword, is_member);
-      res.redirect("/");
+      bcrypt.hash(password, 10, async (err, hashedPassword) => {
+        if (err) {
+          return next(err);
+        } else {
+          await db.addUser(
+            firstname,
+            lastname,
+            email,
+            hashedPassword,
+            is_member
+          );
+          res.redirect("/");
+        }
+      });
     } else {
-      res.redirect("/sign-up");
+      res.redirect("/");
     }
   },
 ];
+
+module.exports.createLogIn = (req, res, next) => {};
