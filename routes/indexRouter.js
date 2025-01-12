@@ -8,8 +8,13 @@ indexRouter.post("/sign-up", indexController.createUser);
 indexRouter.get("/log-in", indexController.getLogInForm);
 indexRouter.post(
   "/log-in",
-  passport.authenticate("local", { successRedirect: "/", failureRedirect: "/" })
+  passport.authenticate("local", {
+    successRedirect: "/success",
+    failureRedirect: "/failure",
+  })
 );
+indexRouter.get("/success", indexController.getSuccessfulLogIn);
+indexRouter.get("/failure", indexController.getFailedLogIn);
 indexRouter.get("/log-out", indexController.logOut);
 
 module.exports = { indexRouter };

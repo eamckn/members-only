@@ -57,6 +57,14 @@ module.exports.getLogInForm = async (req, res, next) => {
   res.render("log-in");
 };
 
+module.exports.getSuccessfulLogIn = (req, res, next) => {
+  res.render("successfulLogIn");
+};
+
+module.exports.getFailedLogIn = (req, res, next) => {
+  res.render("failedLogIn");
+};
+
 module.exports.createUser = [
   validateUser,
   async (req, res, next) => {
