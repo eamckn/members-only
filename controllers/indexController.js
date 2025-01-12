@@ -83,4 +83,12 @@ module.exports.createUser = [
   },
 ];
 
-module.exports.createLogIn = (req, res, next) => {};
+module.exports.logOut = (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    } else {
+      res.redirect("/");
+    }
+  });
+};

@@ -10,5 +10,6 @@ indexRouter.post(
   "/log-in",
   passport.authenticate("local", { successRedirect: "/", failureRedirect: "/" })
 );
+indexRouter.get("/log-out", indexController.logOut);
 
 module.exports = { indexRouter };
