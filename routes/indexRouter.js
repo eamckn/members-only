@@ -18,5 +18,6 @@ indexRouter.get("/failure", indexController.getFailedLogIn);
 indexRouter.get("/log-out", indexController.logOut);
 indexRouter.get("/member", indexController.getNewMemberForm);
 indexRouter.post("/member", indexController.updateMembership);
+indexRouter.get("/new-message", indexController.getNewMessageForm);
 
 module.exports = { indexRouter };

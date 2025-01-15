@@ -9,6 +9,7 @@
     <h1>Members only</h1>
     <% if (locals.currentUser) { %>
     <p>Click <a href="./log-out">here</a> to log-out</p>
+    <p>Click <a href="./new-message">here</a> to write a new message</p>
     <% if (!locals.currentUser.is_member) { %>
     <p>Click <a href="./member">here</a> to become a member...</p>
     <% } %> <% } else { %>

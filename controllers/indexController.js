@@ -69,6 +69,10 @@ module.exports.getNewMemberForm = (req, res, next) => {
   res.render("member");
 };
 
+module.exports.getNewMessageForm = (req, res, next) => {
+  res.render("new-message");
+};
+
 module.exports.updateMembership = async (req, res, next) => {
   if (req.body.secret === process.env.PASSWORD) {
     const { id } = req.user;
