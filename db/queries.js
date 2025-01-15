@@ -16,3 +16,10 @@ module.exports.addUser = async (
 module.exports.updateMembership = async (id) => {
   await pool.query("UPDATE members SET is_member = true WHERE id = $1", [id]);
 };
+
+module.exports.addMessage = async (date, message, id) => {
+  await pool.query(
+    "INSERT INTO messages (timestamp, text, member_id) VALUES ($1, $2, $3)",
+    [date, message, id]
+  );
+};

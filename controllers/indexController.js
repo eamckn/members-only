@@ -109,6 +109,14 @@ module.exports.createUser = [
   },
 ];
 
+module.exports.createMessage = async (req, res, next) => {
+  const date = new Date();
+  const { message } = req.body;
+  const { id } = req.user;
+  await db.addMessage(date, message, id);
+  res.redirect("/");
+};
+
 module.exports.logOut = (req, res, next) => {
   req.logout((err) => {
     if (err) {
