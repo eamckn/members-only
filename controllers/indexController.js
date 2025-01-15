@@ -65,6 +65,20 @@ module.exports.getFailedLogIn = (req, res, next) => {
   res.render("failedLogIn");
 };
 
+module.exports.getNewMemberForm = (req, res, next) => {
+  res.render("member");
+};
+
+module.exports.updateMembership = async (req, res, next) => {
+  if (req.body.secret === process.env.PASSWORD) {
+    const { id } = req.user;
+    await db.updateMembership(id);
+    res.render("memberSuccess");
+  } else {
+    res.render("memberFailure");
+  }
+};
+
 module.exports.createUser = [
   validateUser,
   async (req, res, next) => {

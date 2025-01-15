@@ -16,5 +16,7 @@ indexRouter.post(
 indexRouter.get("/success", indexController.getSuccessfulLogIn);
 indexRouter.get("/failure", indexController.getFailedLogIn);
 indexRouter.get("/log-out", indexController.logOut);
+indexRouter.get("/member", indexController.getNewMemberForm);
+indexRouter.post("/member", indexController.updateMembership);
 
 module.exports = { indexRouter };

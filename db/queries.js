@@ -12,3 +12,7 @@ module.exports.addUser = async (
     [firstname, lastname, email, password, is_member]
   );
 };
+
+module.exports.updateMembership = async (id) => {
+  await pool.query("UPDATE members SET is_member = true WHERE id = $1", [id]);
+};
