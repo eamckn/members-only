@@ -133,3 +133,10 @@ module.exports.logOut = (req, res, next) => {
     }
   });
 };
+
+module.exports.deleteMessage = async (req, res, next) => {
+  const { message_id } = req.body;
+  console.log(message_id);
+  await db.deleteMessage(message_id);
+  res.redirect("/");
+};

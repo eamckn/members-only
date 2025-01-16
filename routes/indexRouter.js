@@ -20,5 +20,6 @@ indexRouter.get("/member", indexController.getNewMemberForm);
 indexRouter.post("/member", indexController.updateMembership);
 indexRouter.get("/new-message", indexController.getNewMessageForm);
 indexRouter.post("/new-message", indexController.createMessage);
+indexRouter.post("/delete", indexController.deleteMessage);
 
 module.exports = { indexRouter };

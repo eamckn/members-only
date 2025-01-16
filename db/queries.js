@@ -32,3 +32,7 @@ module.exports.addMessage = async (date, message, id) => {
     [date, message, id]
   );
 };
+
+module.exports.deleteMessage = async (id) => {
+  await pool.query("DELETE FROM messages WHERE message_id = $1", [id]);
+};

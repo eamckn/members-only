@@ -23,7 +23,17 @@
         Posted by <%- message.firstname %> <%- message.lastname %>
       </p>
       <p class="timestamp">On <%- message.timestamp %></p>
-      <% } %>
+      <% if (locals.currentUser.is_admin) { %>
+      <form action="./delete" method="post">
+        <button
+          type="submit"
+          name="message_id"
+          value="<%- message.message_id %>"
+        >
+          Delete message
+        </button>
+      </form>
+      <% } %> <% } %>
     </div>
     <% }) } %>
   </body>
