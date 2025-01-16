@@ -90,11 +90,11 @@ module.exports.createUser = [
   async (req, res, next) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-      const { firstname, lastname, email, password, is_member, admin } =
-        req.body;
+      const { firstname, lastname, email, password, member, admin } = req.body;
       //console.log("ADMIN = " + admin);
       const is_admin = admin === "true" ? true : false;
       //console.log("IS_ADMIN = " + is_admin);
+      const is_member = is_admin === true ? true : member;
       bcrypt.hash(password, 10, async (err, hashedPassword) => {
         if (err) {
           return next(err);
