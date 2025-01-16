@@ -42,8 +42,10 @@ const generatePassword = (plainTextPassword) => {
   return hash;
 };
 
-module.exports.getHome = (req, res, next) => {
-  res.render("index");
+module.exports.getHome = async (req, res, next) => {
+  const messages = await db.getMessages();
+  console.log(messages);
+  res.render("index", { messages: messages });
 };
 
 module.exports.getSignUpForm = async (req, res, next) => {

@@ -15,6 +15,14 @@
     <% } %> <% } else { %>
     <p>Click <a href="./sign-up">here</a> to sign up</p>
     <p>Click <a href="./log-in">here</a> to log-in</p>
-    <% } %>
+    <% } %> <% if (locals.messages) { %> <% messages.forEach(message => { %>
+    <div class="message">
+      <p class="text"><%- message.text %></p>
+      <% if (locals.currentUser && locals.currentUser.is_member) { %>
+      <p class="author">Posted by <%- message.member_id %></p>
+      <p class="timestamp">On <%- message.timestamp %></p>
+      <% } %>
+    </div>
+    <% }) } %>
   </body>
 </html>
