@@ -19,7 +19,9 @@
     <div class="message">
       <p class="text"><%- message.text %></p>
       <% if (locals.currentUser && locals.currentUser.is_member) { %>
-      <p class="author">Posted by <%- message.member_id %></p>
+      <p class="author">
+        Posted by <%- message.firstname %> <%- message.lastname %>
+      </p>
       <p class="timestamp">On <%- message.timestamp %></p>
       <% } %>
     </div>

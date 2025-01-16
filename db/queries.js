@@ -18,8 +18,10 @@ module.exports.updateMembership = async (id) => {
 };
 
 module.exports.getMessages = async () => {
-  const { rows } = await pool.query("SELECT * FROM messages");
-  //console.log(rows);
+  const { rows } = await pool.query(
+    "SELECT message_id, timestamp, text, firstname, lastname FROM messages INNER JOIN members ON messages.member_id = members.id"
+  );
+  console.log(rows);
   return rows;
 };
 
