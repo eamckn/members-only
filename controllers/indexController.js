@@ -44,7 +44,7 @@ const generatePassword = (plainTextPassword) => {
 
 module.exports.getHome = async (req, res, next) => {
   const messages = await db.getMessages();
-  console.log(messages);
+  //console.log(messages);
   res.render("index", { messages: messages });
 };
 
@@ -90,7 +90,11 @@ module.exports.createUser = [
   async (req, res, next) => {
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-      const { firstname, lastname, email, password, is_member } = req.body;
+      const { firstname, lastname, email, password, is_member, admin } =
+        req.body;
+      //console.log("ADMIN = " + admin);
+      const is_admin = admin === "true" ? true : false;
+      //console.log("IS_ADMIN = " + is_admin);
       bcrypt.hash(password, 10, async (err, hashedPassword) => {
         if (err) {
           return next(err);
@@ -100,7 +104,8 @@ module.exports.createUser = [
             lastname,
             email,
             hashedPassword,
-            is_member
+            is_member,
+            is_admin
           );
           res.redirect("/");
         }

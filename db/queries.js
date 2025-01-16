@@ -5,11 +5,12 @@ module.exports.addUser = async (
   lastname,
   email,
   password,
-  is_member
+  is_member,
+  is_admin
 ) => {
   await pool.query(
-    "INSERT INTO members (firstname, lastname, email, password, is_member) VALUES ($1, $2, $3, $4, $5)",
-    [firstname, lastname, email, password, is_member]
+    "INSERT INTO members (firstname, lastname, email, password, is_member, is_admin) VALUES ($1, $2, $3, $4, $5, $6)",
+    [firstname, lastname, email, password, is_member, is_admin]
   );
 };
 
@@ -21,7 +22,7 @@ module.exports.getMessages = async () => {
   const { rows } = await pool.query(
     "SELECT message_id, timestamp, text, firstname, lastname FROM messages INNER JOIN members ON messages.member_id = members.id"
   );
-  console.log(rows);
+  //console.log(rows);
   return rows;
 };
 
