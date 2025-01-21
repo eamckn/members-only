@@ -6,7 +6,7 @@ const auth = require("../routes/authMiddleware");
 // GET routes
 indexRouter.get("/", indexController.getHome);
 indexRouter.get("/sign-up", indexController.getSignUpForm);
-indexRouter.get("/log-in", auth.isLoggedIn, indexController.getLogInForm);
+indexRouter.get("/log-in", auth.isNotLoggedIn, indexController.getLogInForm);
 indexRouter.get("/success", indexController.getSuccessfulLogIn);
 indexRouter.get("/failure", indexController.getFailedLogIn);
 indexRouter.get("/log-out", auth.isAuth, indexController.logOut);
