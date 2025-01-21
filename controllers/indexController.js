@@ -76,7 +76,7 @@ module.exports.getNewMessageForm = (req, res, next) => {
 };
 
 module.exports.updateMembership = async (req, res, next) => {
-  if (req.body.secret === process.env.PASSWORD) {
+  if (req.body.secret === process.env.MEMBER_PASSWORD) {
     const { id } = req.user;
     await db.updateMembership(id);
     res.render("memberSuccess");

@@ -28,7 +28,7 @@ app.use(express.static(assetsPath));
 app.use(
   session({
     store: sessionStore,
-    secret: "secret",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
