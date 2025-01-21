@@ -36,22 +36,12 @@ const validateUser = [
     }),
 ];
 
-const generatePassword = (plainTextPassword) => {
-  const salt = bcrypt.genSaltSync(10);
-  const hash = bcrypt.hashSync(plainTextPassword, salt);
-  return hash;
-};
-
 module.exports.getHome = async (req, res, next) => {
   const messages = await db.getMessages();
-  //console.log(messages);
   res.render("index", { messages: messages });
 };
 
 module.exports.getSignUpForm = async (req, res, next) => {
-  //const password = generatePassword("hello");
-  //console.log(bcrypt.compareSync("hello", password));
-  //console.log(req.session);
   res.render("sign-up");
 };
 
@@ -91,9 +81,7 @@ module.exports.createUser = [
     const errors = validationResult(req);
     if (errors.isEmpty()) {
       const { firstname, lastname, email, password, member, admin } = req.body;
-      //console.log("ADMIN = " + admin);
       const is_admin = admin === "true" ? true : false;
-      //console.log("IS_ADMIN = " + is_admin);
       const is_member = is_admin === true ? true : member;
       bcrypt.hash(password, 10, async (err, hashedPassword) => {
         if (err) {
