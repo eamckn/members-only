@@ -107,7 +107,7 @@ module.exports.createUser = [
             is_member,
             is_admin
           );
-          res.redirect("/");
+          res.redirect("/log-in");
         }
       });
     } else {
